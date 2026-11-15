@@ -407,7 +407,8 @@
 }
 .type-list__spec strong { display: block; font-size: 0.9375rem; font-weight: 600; }
 .type-list__spec span { font-size: 0.8125rem; color: var(--ink-soft); }
-.type-list p { margin: 0; color: #1f2937; overflow-wrap: anywhere; }
+/* samples render in the typeface the spec names (every project's type spec is Pretendard) */
+.type-list p { margin: 0; color: #1f2937; overflow-wrap: anywhere; font-family: 'Pretendard Variable', Pretendard, sans-serif; }
 
 /* ---- components ---- */
 .comp {

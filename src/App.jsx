@@ -6,6 +6,7 @@ import Work from './work/Work'
 import ProjectDetail from './detail/ProjectDetail'
 import Footer from './footer/Footer'
 import Skills from './skills/Skills'
+import ToTop from './totop/ToTop'
 import Loader from './loader/Loader'
 
 // Hash routing: #/project/<slug> shows a detail page, anything else is the home page.
@@ -53,6 +54,7 @@ export default function App() {
           <Work id="work" instant={fromDetail} />
           <Skills />
           <Footer />
+          <ToTop />
         </main>
       )}
     </>

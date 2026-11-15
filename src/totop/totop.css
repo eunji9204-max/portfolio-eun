@@ -1,0 +1,36 @@
+.to-top {
+  position: fixed;
+  /* centred in the right gutter like the detail page's rail, never closer than 12px to the edge */
+  right: max(12px, calc((clamp(24px, 6vw, 112px) - 48px) / 2));
+  bottom: 28px;
+  z-index: 15;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #111;
+  background: rgb(255 255 255 / 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 10px 30px -10px rgb(0 0 0 / 0.22);
+  cursor: pointer;
+  opacity: 0;
+  translate: 0 16px;
+  pointer-events: none;
+  transition: opacity 0.3s ease, translate 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease, color 0.25s ease;
+}
+.to-top.is-on { opacity: 1; translate: 0 0; pointer-events: auto; }
+.to-top:hover { color: #fff; background: #111; }
+.to-top:hover svg { translate: 0 -2px; }
+.to-top svg { transition: translate 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.to-top:focus-visible { outline: 2px solid #9a5560; outline-offset: 3px; }
+
+@media (max-width: 767px), (hover: none) {
+  .to-top { right: 16px; bottom: 16px; width: 44px; height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top, .to-top svg { transition: none; }
+}

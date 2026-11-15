@@ -234,7 +234,7 @@ export const PROJECT_DETAILS = {
       { label: "Role", value: "UI/UX Design · Data Viz" },
       { label: "Scope", value: "Web Dashboard · Chart System" },
       { label: "Tools", value: "Figma" },
-      { label: "Status", value: "서비스 오픈 · Launched" },
+      { label: "Status", value: "오픈 준비 중 · Pre-launch" },
     ],
     mockup: { title: "에너지 대시보드 시안", desc: "복잡한 에너지·배출량 데이터를 차트와 KPI 카드로 구조화했습니다." },
     hotspots: [
@@ -330,7 +330,7 @@ export const PROJECT_DETAILS = {
       { label: "Role", value: "UI/UX Design · Data Viz" },
       { label: "Scope", value: "Monitoring Dashboard · Map UI" },
       { label: "Tools", value: "Figma" },
-      { label: "Status", value: "서비스 오픈 · Launched" },
+      { label: "Status", value: "오픈 준비 중 · Pre-launch" },
     ],
     mockup: { title: "통합 모니터링 시안", desc: "다크 헤더의 KPI와 지도 기반 설비 현황으로 관제 화면의 몰입감을 높였습니다." },
     hotspots: [

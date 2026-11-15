@@ -96,8 +96,8 @@ export default function Hero() {
               <path d="M5 3l14 7.2-6.1 1.7L10.2 18z" fill="currentColor" />
             </svg>
           </span>
-          <span className="hero__hint-desktop">Move cursor to call me !</span>
-          <span className="hero__hint-touch">Tap to call me !</span>
+          <span className="hero__hint-desktop">Click to say hi !</span>
+          <span className="hero__hint-touch">Tap to say hi !</span>
         </p>
       </div>
 
