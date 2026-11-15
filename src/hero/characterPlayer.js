@@ -2,14 +2,15 @@
 // React never re-renders while it runs.
 //
 // Frame map (public/frames/f000–f189, 24 fps source):
-//   0–56    working at the laptop (idle loop, ping-pong)
+//   0–28    typing, eyes on the laptop (idle loop, ping-pong)
+//   30–56   gaze drifts left and the head lifts (only used as the run-up to the left turn)
 //   56–72   head turns to the viewer's left, 72–88 holds there
 //   98–112  head turns to the viewer's right, 108–118 holds there
 //   124–146 looks up, surprised and happy · 146–182 waves · 182–189 points down
 
 export const FRAME_COUNT = 190
 const FPS = 24
-const IDLE = [0, 56]
+const IDLE = [0, 28]
 const HOLD_MS = 2500
 const FADE_MS = 320
 
@@ -152,10 +153,10 @@ export function createCharacterPlayer({ canvas, src, reducedMotion = false, onPr
     const inRight = p >= 96 && p <= 120
     if (zone === 'left') {
       const into = inRight ? [play(72, FPS * 1.2)] : [goTo(56), play(72)]
-      queue = [...into, hold(HOLD_MS, 72, 88), play(72, FPS * 2), play(54, FPS * 0.9)]
+      queue = [...into, hold(HOLD_MS, 72, 88), play(72, FPS * 2), play(54, FPS * 0.9), jump(16)]
     } else if (zone === 'right') {
       const into = inLeft ? [play(110, FPS * 1.2)] : [goTo(98), play(110)]
-      queue = [...into, hold(HOLD_MS, 108, 118), play(108, FPS * 2), play(98, FPS * 0.9), jump(56)]
+      queue = [...into, hold(HOLD_MS, 108, 118), play(108, FPS * 2), play(98, FPS * 0.9), jump(16)]
     } else if (zone === 'center') {
       queue = [jump(124), play(146, 18), play(189), hold(1800, 189, 189), jump(20)]
     }
