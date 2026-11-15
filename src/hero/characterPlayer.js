@@ -146,10 +146,16 @@ export function createCharacterPlayer({ canvas, src, reducedMotion = false, onPr
     pending = null
     step = null
     action = zone
+    // The source clip turns left (56–88) and then straight on to the right (88–112), so moving
+    // between the two zones plays that stretch forwards (left -> right) or backwards (right -> left).
+    const inLeft = p > 56 && p < 96
+    const inRight = p >= 96 && p <= 120
     if (zone === 'left') {
-      queue = [goTo(56), play(72), hold(HOLD_MS, 72, 88), play(72, FPS * 2), play(54, FPS * 0.9)]
+      const into = inRight ? [play(72, FPS * 1.2)] : [goTo(56), play(72)]
+      queue = [...into, hold(HOLD_MS, 72, 88), play(72, FPS * 2), play(54, FPS * 0.9)]
     } else if (zone === 'right') {
-      queue = [goTo(98), play(110), hold(HOLD_MS, 108, 118), play(108, FPS * 2), play(98, FPS * 0.9), jump(56)]
+      const into = inLeft ? [play(110, FPS * 1.2)] : [goTo(98), play(110)]
+      queue = [...into, hold(HOLD_MS, 108, 118), play(108, FPS * 2), play(98, FPS * 0.9), jump(56)]
     } else if (zone === 'center') {
       queue = [jump(124), play(146, 18), play(189), hold(1800, 189, 189), jump(20)]
     }
