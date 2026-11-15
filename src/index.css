@@ -1,0 +1,54 @@
+/* Paperlogy (github.com/whitedev7773/Paperlogy) — self-hosted, only the weights this site uses */
+@font-face { font-family: 'Paperlogy'; font-weight: 300; font-display: swap; src: url('/fonts/paperlogy/Paperlogy-3Light.woff2') format('woff2'); }
+@font-face { font-family: 'Paperlogy'; font-weight: 400; font-display: swap; src: url('/fonts/paperlogy/Paperlogy-4Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Paperlogy'; font-weight: 500; font-display: swap; src: url('/fonts/paperlogy/Paperlogy-5Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Paperlogy'; font-weight: 600; font-display: swap; src: url('/fonts/paperlogy/Paperlogy-6SemiBold.woff2') format('woff2'); }
+@font-face { font-family: 'Paperlogy'; font-weight: 700; font-display: swap; src: url('/fonts/paperlogy/Paperlogy-7Bold.woff2') format('woff2'); }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: #fff;
+  color: #2a1418;
+  font-family: 'Paperlogy', 'Pretendard Variable', Pretendard, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ---- entrance (runs once the loader hands over: html.is-ready) ---- */
+@keyframes enter-rise { from { opacity: 0; translate: 0 26px; } }
+@keyframes enter-down { from { opacity: 0; translate: 0 -14px; } }
+@keyframes enter-stage { from { opacity: 0; translate: 0 48px; scale: 0.96; } }
+
+.is-ready .site-header { animation: enter-down 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
+.is-ready .hero__tagline,
+.is-ready .hero__greet,
+.is-ready .hero__role,
+.is-ready .hero__hint { animation: enter-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.is-ready .hero__tagline { animation-delay: 0.3s; }
+.is-ready .hero__greet { animation-delay: 0.4s; }
+.is-ready .hero__role { animation-delay: 0.52s; }
+.is-ready .hero__hint { animation-delay: 0.66s; }
+.is-ready .hero__stage { animation: enter-stage 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+
+/* work header + cards rise as they scroll into view (class added by Work.jsx) */
+.work__grid > li { transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), translate 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+.work__grid > li.is-pending { opacity: 0; translate: 0 48px; }
+/* section header: eyebrow then title rise out of a mask, one after the other */
+.work__head { overflow: hidden; }
+.work__head > * { transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), translate 1s cubic-bezier(0.22, 1, 0.36, 1); }
+.work__head > :nth-child(2) { transition-delay: 0.12s; }
+.work__head.is-pending > * { opacity: 0; translate: 0 100%; }
+
+/* hero scroll-out parallax: --sp goes 0 -> 1 as the hero leaves (set by Hero.jsx) */
+.hero__intro { transform: translateY(calc(var(--sp, 0) * -90px)); opacity: calc(1 - var(--sp, 0) * 1.6); }
+.hero__character { transform: translateY(calc(var(--sp, 0) * 70px)) scale(calc(1 - var(--sp, 0) * 0.08)); transform-origin: 50% 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-ready .site-header, .is-ready .hero__tagline, .is-ready .hero__greet, .is-ready .hero__role,
+  .is-ready .hero__hint, .is-ready .hero__stage { animation: none; }
+  .work__head.is-pending > *, .work__grid > li.is-pending { opacity: 1; translate: none; }
+}
