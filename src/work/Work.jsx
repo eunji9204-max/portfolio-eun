@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { LayoutGrid, List } from 'lucide-react'
 import { projects } from './projects'
 import './work.css'
 
 // instant: skip the reveal (coming back from a detail page lands here mid-morph)
 export default function Work({ id, instant = false }) {
   const gridRef = useRef(null)
+  const [list, setList] = useState(false) // image cards by default; the toggle switches to the text-only list
 
   // Section header and cards rise in as they enter the viewport, cards staggered per column.
   useEffect(() => {
@@ -33,12 +35,22 @@ export default function Work({ id, instant = false }) {
   }, [instant])
 
   return (
-    <section className="work" id={id} aria-labelledby="work-title">
+    <section className={`work${list ? ' work--list' : ''}`} id={id} aria-labelledby="work-title">
       <header className="work__head">
-        <p className="work__eyebrow">Portfolio</p>
-        <h2 className="work__title" id="work-title">
-          Selected <em>Work</em>
-        </h2>
+        <div>
+          <p className="work__eyebrow">Portfolio</p>
+          <h2 className="work__title" id="work-title">
+            Selected <em>Work</em>
+          </h2>
+        </div>
+        <div className="work__view" role="group" aria-label="보기 방식">
+          <button type="button" aria-pressed={!list} aria-label="카드로 보기" onClick={() => setList(false)}>
+            <LayoutGrid size={18} strokeWidth={1.8} />
+          </button>
+          <button type="button" aria-pressed={list} aria-label="목록으로 보기" onClick={() => setList(true)}>
+            <List size={18} strokeWidth={1.8} />
+          </button>
+        </div>
       </header>
 
       <ul className="work__grid" ref={gridRef}>

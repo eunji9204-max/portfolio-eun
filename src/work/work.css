@@ -138,6 +138,51 @@ a.work-card:focus-visible {
   .work__grid { grid-template-columns: 1fr; }
 }
 
+/* ---- list / card toggle ---- */
+.work__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.work__view { display: flex; gap: 4px; padding: 4px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgb(75 31 40 / 0.12); }
+.work__view button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  color: rgb(75 31 40 / 0.45);
+  background: none;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+.work__view button:hover { color: var(--maroon); }
+.work__view button[aria-pressed='true'] { color: var(--maroon); background: var(--rose-soft); }
+.work__view button:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+
+/* ---- text-only list: one project per line ---- */
+.work--list .work__grid { grid-template-columns: 1fr; gap: 0; border-top: 1px solid rgb(75 31 40 / 0.12); }
+.work--list .work__grid > li { border-bottom: 1px solid rgb(75 31 40 / 0.12); }
+.work--list .work-card__media,
+.work--list .work-card__desc,
+.work--list .work-card__tags { display: none; }
+.work--list .work-card__body {
+  display: grid;
+  grid-template-columns: 2.5em minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(20px, 2.4vw, 28px) 0.25rem;
+}
+.work--list .work-card__meta { display: contents; }
+.work--list .work-card__meta span:first-child { order: 1; }
+.work--list .work-card__title { order: 2; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color 0.3s ease, translate 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+.work--list .work-card__meta span:last-child { order: 3; }
+.work--list .work-card__body::after { content: '↗'; order: 4; color: var(--maroon); transition: translate 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (hover: hover) {
+  .work--list a.work-card:hover .work-card__title { color: var(--maroon); translate: 6px 0; }
+  .work--list a.work-card:hover .work-card__body::after { translate: 3px -3px; }
+}
+@media (max-width: 767px) {
+  .work--list .work-card__meta span:last-child { display: none; }
+}
+
 /* same breakpoint as the header's 16px gutter */
 @media (max-width: 767px), (hover: none) {
   .work { padding-left: 16px; padding-right: 16px; }

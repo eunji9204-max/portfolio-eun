@@ -152,7 +152,8 @@ export function createCharacterPlayer({ canvas, src, reducedMotion = false, onPr
     const inLeft = p > 56 && p < 96
     const inRight = p >= 96 && p <= 120
     if (zone === 'left') {
-      const into = inRight ? [play(72, FPS * 1.2)] : [goTo(56), play(72)]
+      // the left turn is 16 frames vs the right's 12, so play it faster to land in the same ~0.5s
+      const into = inRight ? [play(72, FPS * 1.2)] : [goTo(56), play(72, FPS * 1.35)]
       queue = [...into, hold(HOLD_MS, 72, 88), play(72, FPS * 2), play(54, FPS * 0.9), jump(16)]
     } else if (zone === 'right') {
       const into = inLeft ? [play(110, FPS * 1.2)] : [goTo(98), play(110)]

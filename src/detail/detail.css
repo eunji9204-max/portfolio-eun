@@ -423,6 +423,8 @@
 .comp__group--wide { grid-column: 1 / -1; }
 .comp__label { margin: 0 0 0.9rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(42 20 24 / 0.45); }
 .comp__row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+/* the whole components panel renders in Pretendard like the type samples */
+.comp { font-family: 'Pretendard Variable', Pretendard, sans-serif; }
 
 .comp-btn {
   display: inline-flex;
