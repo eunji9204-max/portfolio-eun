@@ -14,7 +14,7 @@
   font-size: 0.8125rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgb(75 31 40 / 0.5);
+  color: rgb(75 31 40 / 0.68);
 }
 
 .work__title {
@@ -82,7 +82,7 @@
   justify-content: space-between;
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
-  color: rgb(75 31 40 / 0.45);
+  color: rgb(75 31 40 / 0.68);
 }
 
 .work-card__title {
@@ -178,7 +178,7 @@ a.work-card:focus-visible {
   height: 36px;
   border: 0;
   border-radius: 8px;
-  color: rgb(75 31 40 / 0.45);
+  color: rgb(75 31 40 / 0.68);
   background: none;
   cursor: pointer;
   transition: color 0.25s ease, background 0.25s ease;

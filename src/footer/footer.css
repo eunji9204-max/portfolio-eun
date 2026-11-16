@@ -17,7 +17,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgb(17 17 17 / 0.45);
+  color: rgb(17 17 17 / 0.62);
 }
 
 .site-footer__mail {
@@ -34,13 +34,23 @@
 }
 .site-footer__mail:hover { background-size: 100% 1px; }
 .site-footer__mail svg { transition: translate 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
-.site-footer__mail:hover svg { translate: 3px -3px; }
+.site-footer__mail:hover svg { translate: 0 -2px; }
 .site-footer__mail:focus-visible { outline: 2px solid #9a5560; outline-offset: 4px; border-radius: 4px; }
+
+.site-footer__copied {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #9a5560;
+  opacity: 0;
+  translate: -4px 0;
+  transition: opacity 0.2s ease, translate 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-footer__copied.is-on { opacity: 1; translate: 0 0; }
 
 .site-footer__copy {
   margin: 0;
   font-size: 0.8125rem;
-  color: rgb(17 17 17 / 0.5);
+  color: rgb(17 17 17 / 0.62);
 }
 
 @media (max-width: 767px), (hover: none) {
@@ -48,5 +58,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-footer__mail, .site-footer__mail svg { transition: none; }
+  .site-footer__mail, .site-footer__mail svg, .site-footer__copied { transition: none; }
 }

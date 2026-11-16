@@ -43,7 +43,11 @@ export default function Hero() {
     }
     const onCharLeave = () => wave.classList.remove('is-on')
     const onCharClick = () => desktop.matches && player.trigger('center')
-    const onCharKey = (e) => e.key === 'Enter' && player.trigger('center')
+    const onCharKey = (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return
+      e.preventDefault() // Space would otherwise scroll the page
+      player.trigger('center')
+    }
 
     // Touch / small screens: center experience only — tap to greet.
     const onTap = () => !desktop.matches && player.trigger('center')

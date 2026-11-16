@@ -10,7 +10,7 @@
   font-size: 0.8125rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgb(75 31 40 / 0.5);
+  color: rgb(75 31 40 / 0.68);
 }
 .skills__title {
   margin: 0;
@@ -31,7 +31,7 @@
 .skills__group { padding-top: clamp(24px, 3vw, 36px); }
 
 .skills__meta h3 { margin: 0; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; color: #111; }
-.skills__meta p { margin: 0.4rem 0 0; font-size: 0.875rem; color: rgb(17 17 17 / 0.55); }
+.skills__meta p { margin: 0.4rem 0 0; font-size: 0.875rem; color: rgb(17 17 17 / 0.62); }
 
 .skills__chips { list-style: none; margin: 1.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .skills__chips li {

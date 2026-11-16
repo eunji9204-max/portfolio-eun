@@ -81,6 +81,7 @@ export default function ProjectDetail({ slug }) {
 
   return (
     <main className="detail" style={theme} ref={rootRef}>
+      <div className="detail-progress" aria-hidden="true" />
       <div className="detail__progress" ref={progressRef} aria-hidden="true" />
 
       {/* ---- hero ---- */}
