@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { LayoutGrid, List } from 'lucide-react'
+import { ArrowUpRight, LayoutGrid, List } from 'lucide-react'
 import { projects } from './projects'
 import './work.css'
 
@@ -62,11 +62,24 @@ export default function Work({ id, instant = false }) {
             <li key={i}>
               <Card className="work-card" {...(href && { href })} {...(!p.slug && p.link && { target: '_blank', rel: 'noreferrer' })}>
                 {/* shared view-transition name morphs this image into the detail hero */}
-                <div className="work-card__media" style={p.slug ? { viewTransitionName: `work-${p.slug}` } : undefined}>
+                <div
+                  className="work-card__media"
+                  // label follows the pointer via CSS vars (no re-render)
+                  onPointerMove={(e) => {
+                    const r = e.currentTarget.getBoundingClientRect()
+                    e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`)
+                    e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`)
+                  }}
+                  style={p.slug ? { viewTransitionName: `work-${p.slug}` } : undefined}>
                   {p.image ? (
                     <img src={p.image} alt={p.title} loading="lazy" />
                   ) : (
                     <span className="work-card__placeholder" aria-hidden="true">{num}</span>
+                  )}
+                  {href && (
+                    <span className="work-card__badge" aria-hidden="true">
+                      <ArrowUpRight size={15} strokeWidth={2} /> View more
+                    </span>
                   )}
                 </div>
                 <div className="work-card__body">

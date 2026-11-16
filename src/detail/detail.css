@@ -230,6 +230,28 @@
 .mockup__screen { position: relative; }
 .mockup__screen img { display: block; width: 100%; }
 
+/* ---- more screens ---- */
+.screens { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(20px, 3vw, 40px); align-items: start; }
+.screens:has(.screens__item--mobile) { grid-template-columns: minmax(0, 1fr) 300px; } /* phone sits beside the web screen */
+.screens__item--mobile { grid-column: 2; grid-row: 1; }
+.screens__tabs { max-width: 420px; margin-bottom: 1.25rem; }
+.screens__scroll img { display: block; width: 100%; }
+.screens__phone {
+  padding: 10px;
+  border-radius: 36px;
+  background: #111;
+  box-shadow: 0 30px 70px -30px rgb(42 20 24 / 0.4);
+}
+/* tall phone capture: scroll inside the phone instead of stretching the page */
+.screens__phone .screens__scroll { max-height: 600px; overflow-y: auto; border-radius: 28px; scrollbar-width: none; }
+.screens__phone .screens__scroll::-webkit-scrollbar { display: none; }
+.screens__cap { margin: 0.9rem 0 0; font-size: 0.875rem; color: #6b6b6b; }
+.screens__cap strong { margin-right: 0.35rem; color: inherit; font-weight: 700; }
+@media (max-width: 960px) {
+  .screens, .screens:has(.screens__item--mobile) { grid-template-columns: 1fr; }
+  .screens__item--mobile { grid-column: auto; grid-row: auto; width: min(300px, 100%); margin-inline: auto; }
+}
+
 .pin {
   position: absolute;
   translate: -50% -50%;

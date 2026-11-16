@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Copy, Eye, EyeOff, House } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Copy, Eye, EyeOff, House, Moon, Sun } from 'lucide-react'
 import { PROJECT_DETAILS } from './details'
 import './detail.css'
 
@@ -76,6 +76,7 @@ export default function ProjectDetail({ slug }) {
   const next = PROJECT_DETAILS[nextSlug]
   const prevSlug = ORDER[(ORDER.indexOf(slug) - 1 + ORDER.length) % ORDER.length]
   const prev = PROJECT_DETAILS[prevSlug]
+  const no = (n) => pad(d.screens ? n + 1 : n) // optional "More Screens" section shifts the numbering
   const theme = { '--p': d.theme.p, '--deep': d.theme.deep, '--bright': d.theme.bright, '--tint': d.theme.tint }
 
   return (
@@ -123,11 +124,17 @@ export default function ProjectDetail({ slug }) {
         <Mockup d={d} />
       </Section>
 
-      <Section no="03" en="Color System" ko="컬러 시스템" desc="스와치를 누르면 HEX 코드가 복사됩니다.">
+      {d.screens && (
+        <Section no="03" en="More Screens" ko={d.screens.title} desc={d.screens.desc}>
+          <Screens items={d.screens.items} />
+        </Section>
+      )}
+
+      <Section no={no(3)} en="Color System" ko="컬러 시스템" desc="스와치를 누르면 HEX 코드가 복사됩니다.">
         <Colors c={d.colors} onCopy={copy} />
       </Section>
 
-      <Section no="04" en="Typography" ko="타이포그래피">
+      <Section no={no(4)} en="Typography" ko="타이포그래피">
         <ul className="type-list">
           {d.type.map((t) => (
             <li key={t.name} data-reveal>
@@ -141,7 +148,7 @@ export default function ProjectDetail({ slug }) {
         </ul>
       </Section>
 
-      <Section no="05" en="Components" ko="UI 컴포넌트">
+      <Section no={no(5)} en="Components" ko="UI 컴포넌트">
         <Components c={d.components} />
       </Section>
 
@@ -186,6 +193,40 @@ function Section({ no, en, ko, desc, children }) {
   )
 }
 
+// Extra screens: web pages in a browser frame, phone screens in a scrollable phone frame.
+// Two or more web pages share one frame and switch with tabs.
+function Screens({ items }) {
+  const [tab, setTab] = useState(0)
+  const web = items.filter((s) => !s.mobile)
+  const tabbed = web.length > 1
+  const shown = tabbed ? [web[tab], ...items.filter((s) => s.mobile)] : items
+  return (
+    <>
+      {tabbed && (
+        <div className="comp-tabs screens__tabs" role="tablist" style={{ '--n': web.length, '--t': tab, '--r': '999px' }} data-reveal>
+          <span className="comp-tabs__ink" aria-hidden="true" />
+          {web.map((s, i) => (
+            <button key={s.title} type="button" role="tab" aria-selected={i === tab} onClick={() => setTab(i)}>{s.title}</button>
+          ))}
+        </div>
+      )}
+      <ul className="screens">
+        {shown.map((s, i) => (
+          <li key={tabbed && i === 0 ? 'web' : s.title} className={s.mobile ? 'screens__item screens__item--mobile' : 'screens__item'} data-reveal>
+            <div className={s.mobile ? 'screens__phone' : 'mockup__frame'}>
+              {!s.mobile && <div className="mockup__bar" aria-hidden="true"><i /><i /><i /></div>}
+              <div className="screens__scroll" tabIndex={s.mobile ? 0 : undefined} aria-label={s.mobile ? `${s.title} (스크롤)` : undefined}>
+                <img src={s.src} alt={s.title} loading="lazy" />
+              </div>
+            </div>
+            <p className="screens__cap"><strong>{s.title}</strong> {s.desc}</p>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
 function Overview({ d }) {
   const { cards, point, features } = d.overview
   return (
@@ -221,6 +262,7 @@ function Mockup({ d }) {
   const [active, setActive] = useState(0)
   const [pins, setPins] = useState(true)
   const [touched, setTouched] = useState(false)
+  const [dark, setDark] = useState(false) // only used when the project ships a dark-mode screenshot
   const frameRef = useRef(null)
 
   useEffect(() => {
@@ -247,7 +289,7 @@ function Mockup({ d }) {
       <div className="mockup__frame" ref={frameRef} data-reveal>
         <div className="mockup__bar" aria-hidden="true"><i /><i /><i /></div>
         <div className="mockup__screen">
-          <img src={d.image} alt={d.mockup.title} loading="lazy" />
+          <img src={dark ? d.imageDark : d.image} alt={d.mockup.title} loading="lazy" />
           {pins && d.hotspots.map((h, i) => (
             <button
               key={h.title}
@@ -272,6 +314,11 @@ function Mockup({ d }) {
         <button type="button" className="mockup__toggle" onClick={() => setPins((v) => !v)}>
           {pins ? <EyeOff size={15} /> : <Eye size={15} />} {pins ? '번호 숨기기' : '번호 보기'}
         </button>
+        {d.imageDark && (
+          <button type="button" className="mockup__toggle" onClick={() => setDark((v) => !v)} aria-pressed={dark}>
+            {dark ? <Sun size={15} /> : <Moon size={15} />} {dark ? '라이트 모드 보기' : '다크 모드 보기'}
+          </button>
+        )}
         <ol className="mockup__list">
           {d.hotspots.map((h, i) => (
             <li key={h.title}>

@@ -14,9 +14,12 @@ body {
   font-family: 'Paperlogy', 'Pretendard Variable', Pretendard, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  word-break: keep-all; /* Korean: wrap between words, not mid-word */
+  overflow-wrap: break-word; /* but still break long URLs / file names */
 }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+p, li, dd, h1, h2, h3 { text-wrap: pretty; } /* avoid a lone word on the last line */
 
 /* ---- entrance (runs once the loader hands over: html.is-ready) ---- */
 @keyframes enter-rise { from { opacity: 0; translate: 0 26px; } }

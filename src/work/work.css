@@ -48,6 +48,7 @@
 }
 
 .work-card__media {
+  position: relative;
   aspect-ratio: 16 / 10;
   border-radius: 18px;
   overflow: hidden;
@@ -122,6 +123,35 @@
     box-shadow: 0 1px 2px rgb(75 31 40 / 0.04), 0 20px 40px -14px rgb(75 31 40 / 0.2);
   }
   a.work-card:hover .work-card__media img { scale: 1.03; }
+  a.work-card:hover .work-card__badge { opacity: 1; scale: 1; }
+}
+
+/* "View more" pill trailing the cursor, same look as the hero's "인사하기" label */
+.work-card__badge {
+  position: absolute;
+  left: var(--mx, 50%);
+  top: var(--my, 50%);
+  translate: 18px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5em 0.9em;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fff;
+  background: rgb(17 17 17 / 0.88);
+  box-shadow: 0 8px 20px -8px rgb(0 0 0 / 0.35);
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.85;
+  transition: opacity 0.2s ease, scale 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.work-card__badge svg { animation: work-badge-nudge 1.2s ease-in-out infinite; }
+@keyframes work-badge-nudge {
+  0%, 60%, 100% { translate: 0 0; }
+  30% { translate: 2px -2px; }
 }
 
 a.work-card:focus-visible {
@@ -190,4 +220,5 @@ a.work-card:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .work-card__media, .work-card__media img { transition: none; }
+  .work-card__badge svg { animation: none; }
 }

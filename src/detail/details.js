@@ -48,6 +48,14 @@ export const PROJECT_DETAILS = {
       { label: "Status", value: "제안 시안 · Proposal" },
     ],
     mockup: { title: "메인 대시보드 시안", desc: "출근부터 퇴근까지 필요한 업무 정보를 카드형 모듈로 구성했습니다." },
+    screens: {
+      title: "서브페이지",
+      desc: "대시보드에서 이어지는 업무 목록과 상세 화면입니다. 목록에서 고른 업무를 오른쪽 패널로 바로 확인하고, 상세 화면에서 검토부터 완료까지 처리합니다.",
+      items: [
+        { src: `${import.meta.env.BASE_URL}work/project-portal-sub1.jpg`, title: "연구업무 관리", desc: "상태별 KPI 카드와 필터·목록, 선택한 업무의 상세 패널" },
+        { src: `${import.meta.env.BASE_URL}work/project-portal-sub2.jpg`, title: "업무 상세 · 진행 중", desc: "체크리스트·검토 의견·관련 문서·검토 논의와 완료 처리 패널" },
+      ],
+    },
     hotspots: [
       { x: 13.5, y: 22, title: "근무 현황", desc: "출근 시각·잔여 근무시간·연차를 한 카드에서 확인하고 바로 퇴근/외출 처리." },
       { x: 44, y: 40, title: "일정관리", desc: "월간·주간·목록 보기 전환과 일정 유형별 컬러 태그로 한눈에 파악." },
@@ -237,6 +245,13 @@ export const PROJECT_DETAILS = {
       { label: "Status", value: "오픈 준비 중 · Pre-launch" },
     ],
     mockup: { title: "에너지 대시보드 시안", desc: "복잡한 에너지·배출량 데이터를 차트와 KPI 카드로 구조화했습니다." },
+    screens: {
+      title: "서브페이지",
+      desc: "대시보드의 KPI 카드와 차트 스타일을 조회 화면까지 이어 적용했습니다.",
+      items: [
+        { src: `${import.meta.env.BASE_URL}work/project-carbon-sub.png`, title: "산단 온실가스 배출량 조회", desc: "기간별 배출량 누적 막대 차트와 전년 비교, 일자별 상세 표" },
+      ],
+    },
     hotspots: [
       { x: 12, y: 28, title: "에너지 소비 도넛 차트", desc: "일반부하·유연부하 비중을 도넛 차트로, 총량은 중앙에 크게 표시." },
       { x: 36, y: 22, title: "KPI 하이라이트", desc: "다크 바 위 민트 숫자로 총 소비·공급 전력을 가장 먼저 읽히게." },
@@ -311,12 +326,211 @@ export const PROJECT_DETAILS = {
         { icon: FileText, title: "보고서 · 거래", desc: "장외거래·외부사업·보고서 메뉴로 관리 데이터를 업무로 연결합니다." },
       ],
     },
+    next: "eneruse",
+  },
+
+  /* ---------------------------------------------------------------- */
+  eneruse: {
+    no: "04",
+    category: "Energy Platform · RE100",
+    title: ["ENERUSE", "에너지 관리 플랫폼"],
+    lead:
+      "기업의 RE100 이행을 돕는 에너지 관리 서비스. 전력 사용량과 재생에너지 이행 수단, REC 보유 현황을 하나의 대시보드에서 확인하고, 최대수요전력과 사용 패턴까지 분석하도록 설계했습니다.",
+    image: `${import.meta.env.BASE_URL}work/project-eneruse.png`,
+    theme: { p: "#7B7FF0", deep: "#060D3F", bright: "#A5A8FF", tint: "#EEEEFE" },
+    heroGradient: "linear-gradient(135deg,#040930,#060D3F 50%,#7B7FF0)",
+    heroCopy: { label: "ENERGY DASHBOARD", text: ["RE100까지의 거리를", "한눈에"] },
+    meta: [
+      { label: "Client", value: "기업 에너지 관리 서비스" },
+      { label: "Role", value: "UI/UX Design · Data Viz" },
+      { label: "Scope", value: "Dashboard · Analysis Pages" },
+      { label: "Tools", value: "Figma" },
+      { label: "Status", value: "제안 시안" },
+    ],
+    mockup: { title: "메인 대시보드 시안", desc: "RE100 달성률을 가장 먼저 보여주고, 이행 수단과 목표, REC 현황을 카드로 나눠 읽기 쉽게 정리했습니다." },
+    screens: {
+      title: "서브페이지",
+      desc: "같은 헤더와 KPI 카드 구조로 최대수요전력과 전력 사용 패턴 분석 화면을 이어 설계했습니다.",
+      items: [
+        { src: `${import.meta.env.BASE_URL}work/project-eneruse-sub1.png`, title: "최대수요전력 분석", desc: "월별 최대수요전력 추이와 발생일·시간 상세, 일자별 현황 표" },
+        { src: `${import.meta.env.BASE_URL}work/project-eneruse-sub2.png`, title: "전력 사용 패턴 분석", desc: "15분 단위 MDMS·FEMS 사용량 비교와 최대수요전력 발생 시점 표시" },
+      ],
+    },
+    hotspots: [
+      { x: 14, y: 24, title: "RE100 달성률", desc: "원형 게이지와 큰 숫자로 2030년 목표 대비 현재 달성률을 가장 먼저." },
+      { x: 62, y: 24, title: "핵심 지표 카드", desc: "연간 전력·재생에너지 사용량과 잔여 필요량을 전년 대비 증감과 함께." },
+      { x: 25, y: 52, title: "이행수단별 사용 현황", desc: "자가발전·PPA·REC·녹색프리미엄을 아이콘 카드와 비중으로 비교." },
+      { x: 75, y: 52, title: "사용량 · 재생에너지 추이", desc: "월별 막대와 달성률 라인을 겹쳐 사용량과 전환 속도를 함께." },
+      { x: 25, y: 86, title: "RE100 목표 및 필요량", desc: "연도별 목표 달성률과 필요량·실적·잔여량을 표로 정리." },
+      { x: 75, y: 84, title: "REC 보유 현황", desc: "보유·사용·잔여·소각 예정량과 유효기간별 잔여량을 막대로." },
+    ],
+    colors: {
+      primary: [
+        { name: "Night Navy", hex: "#060D3F", usage: "헤더 배경", text: "#fff" },
+        { name: "Volt Violet", hex: "#7B7FF0", usage: "포인트 · 강조 수치 · 버튼", text: "#fff" },
+        { name: "Lilac", hex: "#C3A6EC", usage: "차트 그라데이션", text: "#060D3F" },
+        { name: "Graphite", hex: "#3A3D4F", usage: "KPI 수치 배경", text: "#fff" },
+      ],
+      neutral: [
+        { name: "Ink", hex: "#1A1C29", usage: "제목 · 본문", text: "#fff" },
+        { name: "Gray", hex: "#6B7080", usage: "보조 텍스트", text: "#fff" },
+        { name: "Line", hex: "#E3E5EE", usage: "카드 테두리 · 구분선" },
+        { name: "Surface", hex: "#F5F6FB", usage: "카드 · 표 헤더 배경" },
+      ],
+      semantic: [
+        { name: "Renewable", hex: "#22A35A", tint: "#E5F6EC", label: "재생에너지 · 달성률" },
+        { name: "Up", hex: "#F0384A", tint: "#FDE7EA", label: "증가" },
+        { name: "Down", hex: "#2F80ED", tint: "#E6F0FD", label: "감소" },
+        { name: "Power", hex: "#F5B12E", tint: "#FEF4DF", label: "전력사용량" },
+      ],
+      scaleName: "Violet Scale",
+      scale: ["#EEEEFE", "#DCDDFD", "#C4C6FB", "#A5A8FF", "#8E91F5", "#7B7FF0", "#6264D6", "#4A4CB0", "#2D2F7A", "#060D3F"],
+    },
+    type: [
+      { name: "Display", spec: "Pretendard Bold · 36 / 44", style: { fontSize: "44px", fontWeight: 700, lineHeight: 1.1, backgroundImage: "linear-gradient(90deg,#7B7FF0,#C3A6EC)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }, sample: "328,450 kWh" },
+      { name: "Title", spec: "Pretendard SemiBold · 22 / 30", style: { fontSize: "20px", fontWeight: 600 }, sample: "RE100 이행수단별 사용 현황" },
+      { name: "Body", spec: "Pretendard Regular · 15 / 24", style: { fontSize: "15px" }, sample: "연간 전력사용량 12,480 MWh" },
+      { name: "Caption", spec: "Pretendard Regular · 13 / 18", style: { fontSize: "12px", color: "#6B7080" }, sample: "전년대비 ▼ 6.2% · 단위: MWh" },
+    ],
+    components: {
+      radius: "8px",
+      primary: { label: "검색", icon: ChevronRight, iconRight: true },
+      outline: { label: "시간별", icon: ChevronDown, iconRight: true },
+      live: "15분 단위",
+      badges: [
+        { label: "▲ 6.3%", color: "#F0384A", tint: "#FDE7EA" },
+        { label: "▼ 6.2%", color: "#2F80ED", tint: "#E6F0FD" },
+        { label: "62%", color: "#22A35A", tint: "#E5F6EC" },
+        { label: "진행중", color: "#6264D6", tint: "#EEEEFE" },
+      ],
+      tabs: ["구분", "월간", "연간"],
+      bars: [
+        { label: "2026년 만료 REC", value: 92, state: 0 },
+        { label: "2027년 만료 REC", value: 100, state: 0 },
+        { label: "2028년 만료 REC", value: 83, state: 1 },
+      ],
+      stateLabels: ["보유", "만료 임박"],
+    },
+    overview: {
+      cards: [
+        { tag: "Background", title: "RE100, 이제는 기업의 숙제", body: "고객사와 공급망에서 RE100 이행을 요구하면서, 기업은 전력 사용량과 재생에너지 조달 현황을 꾸준히 관리해야 했습니다." },
+        { tag: "Problem", title: "흩어진 이행 수단과 데이터", body: "자가발전·PPA·REC·녹색프리미엄 실적과 한전 MDMS·FEMS 데이터가 따로 있어, 목표까지 얼마나 남았는지 알기 어려웠습니다." },
+        { tag: "Solution", title: "달성률 중심의 대시보드", body: "RE100 달성률을 가장 위에 두고, 이행 수단·목표·REC 현황과 최대수요전력·사용 패턴 분석을 같은 구조의 화면으로 연결했습니다." },
+      ],
+      point: {
+        title: ["숫자가 많은 화면일수록,", "읽는 순서를 먼저."],
+        body: "딥 네이비 헤더 아래 바이올렛 그라데이션 수치로 시선이 KPI부터 머물게 했습니다. 증가는 Red, 감소는 Blue, 재생에너지는 Green으로 고정해 어느 화면에서든 같은 방식으로 읽히도록 했습니다.",
+      },
+      features: [
+        { icon: Gauge, title: "RE100 달성률", desc: "2030년 목표 대비 현재 달성률을 원형 게이지로 보여줍니다." },
+        { icon: PieChart, title: "이행수단별 현황", desc: "자가발전·PPA·REC·녹색프리미엄의 사용량과 비중을 비교합니다." },
+        { icon: FileCheck2, title: "REC 보유 관리", desc: "보유·사용·잔여·소각 예정량과 유효기간별 잔여량을 확인합니다." },
+        { icon: Zap, title: "최대수요전력 분석", desc: "월별 최대수요전력 추이와 발생일·시간을 상세하게 분석합니다." },
+        { icon: LineChart, title: "전력 사용 패턴", desc: "15분 단위 MDMS·FEMS 사용량을 비교해 피크 시점을 찾습니다." },
+      ],
+    },
+    next: "re100",
+  },
+
+  /* ---------------------------------------------------------------- */
+  re100: {
+    no: "05",
+    category: "Energy Platform · RE100",
+    title: ["RE100", "통합운영플랫폼"],
+    lead:
+      "산업단지의 재생에너지 전환을 위한 통합 운영 플랫폼. 산단 전체의 전력·신재생·온실가스 현황과 산단별 RE 수준을 하나의 대시보드에서 확인하도록 다크·라이트 두 가지 모드로 설계했습니다.",
+    image: `${import.meta.env.BASE_URL}work/project-re100-light.png`,
+    imageDark: `${import.meta.env.BASE_URL}work/project-re100-dark.png`,
+    theme: { p: "#1D5BFF", deep: "#0B1424", bright: "#4C8DFF", tint: "#E8F0FF" },
+    heroGradient: "linear-gradient(135deg,#070C16,#0B1424 50%,#1D5BFF)",
+    heroCopy: { label: "INTEGRATED DASHBOARD", text: ["산단의 에너지를", "RE100으로"] },
+    meta: [
+      { label: "Client", value: "산업단지 RE100 운영" },
+      { label: "Role", value: "UI/UX Design · Data Viz" },
+      { label: "Scope", value: "Dashboard · Map UI · Dark/Light" },
+      { label: "Tools", value: "Figma" },
+      { label: "Status", value: "오픈 준비 중 · Pre-launch" },
+    ],
+    mockup: { title: "통합 대시보드 시안", desc: "같은 레이아웃을 다크·라이트 두 모드로 설계했습니다. 버튼으로 모드를 바꿔 볼 수 있습니다." },
+    hotspots: [
+      { x: 14, y: 18, title: "에너지 현황 · RE 수준", desc: "기준 월과 산단 전체의 RE 등급을 배터리 아이콘과 함께 가장 먼저." },
+      { x: 52, y: 16, title: "핵심 지표 KPI", desc: "전기·한국전력·신재생 사용량과 온실가스 배출량을 이번 달·지난달로 비교." },
+      { x: 18, y: 45, title: "전력소비량 차트", desc: "전기·온실가스 탭으로 전환하며 산단 평균과 지역의 추이를 비교." },
+      { x: 40, y: 58, title: "기간별 상세 표", desc: "월별 한국전력·신재생 사용량을 산단 평균과 나란히 정리." },
+      { x: 30, y: 86, title: "산단 성과 목표", desc: "재생에너지 비중·전력·신재생·온실가스 감축 목표를 진행 바로 표시." },
+      { x: 76, y: 52, title: "산단 지도", desc: "전력량을 색 단계로 칠한 지도 위에 산단별 RE 등급과 사용량을 카드로." },
+    ],
+    colors: {
+      primary: [
+        { name: "Deep Navy", hex: "#0B1424", usage: "다크 모드 배경", text: "#fff" },
+        { name: "Grid Blue", hex: "#1D5BFF", usage: "포인트 · 탭 · 사이드바", text: "#fff" },
+        { name: "Signal Blue", hex: "#4C8DFF", usage: "강조 수치 · 차트 라인", text: "#fff" },
+        { name: "Leaf Green", hex: "#3DBE6B", usage: "신재생 · RE 등급", text: "#fff" },
+      ],
+      neutral: [
+        { name: "Ink", hex: "#111827", usage: "라이트 모드 제목 · 본문", text: "#fff" },
+        { name: "Panel", hex: "#141E30", usage: "다크 모드 카드", text: "#fff" },
+        { name: "Line", hex: "#D9E1EC", usage: "라이트 모드 구분선" },
+        { name: "Surface", hex: "#F3F6FA", usage: "라이트 모드 배경" },
+      ],
+      semantic: [
+        { name: "Renewable", hex: "#3DBE6B", tint: "#E6F7EC", label: "재생에너지" },
+        { name: "Power", hex: "#1D5BFF", tint: "#E8F0FF", label: "전력사용량" },
+        { name: "Solar", hex: "#8B5CF6", tint: "#F1EBFE", label: "신재생 사용량" },
+        { name: "Carbon", hex: "#14B8A6", tint: "#E3F8F5", label: "온실가스 감축" },
+      ],
+      scaleName: "Blue Scale",
+      scale: ["#E8F0FF", "#C9DAFF", "#9FBEFF", "#73A0FF", "#4C8DFF", "#1D5BFF", "#164AD6", "#1239A8", "#0E2A7A", "#0B1424"],
+    },
+    type: [
+      { name: "Display", spec: "Pretendard Bold · 28 / 36", style: { fontSize: "44px", fontWeight: 700, lineHeight: 1.1, color: "#1D5BFF" }, sample: "83,594" },
+      { name: "Title", spec: "Pretendard SemiBold · 20 / 28", style: { fontSize: "20px", fontWeight: 600 }, sample: "산단 전체 신재생 사용량(MWh)" },
+      { name: "Body", spec: "Pretendard Regular · 15 / 24", style: { fontSize: "15px" }, sample: "한국전력 전력량 83.7 MWh" },
+      { name: "Caption", spec: "Pretendard Regular · 12 / 16", style: { fontSize: "12px", color: "#6B7280" }, sample: "2024.05 · 단위: MWh" },
+    ],
+    components: {
+      radius: "8px",
+      primary: { label: "전기", icon: Zap },
+      outline: { label: "전기(MWh)", icon: ChevronDown, iconRight: true },
+      live: "실시간",
+      badges: [
+        { label: "RE15", color: "#1D5BFF", tint: "#E8F0FF" },
+        { label: "RE20", color: "#2E9E57", tint: "#E6F7EC" },
+        { label: "2024.05", color: "#1239A8", tint: "#EEF3FF" },
+        { label: "참여기업 2", color: "#525F70", tint: "#EEF2F5" },
+      ],
+      tabs: ["전기", "온실가스"],
+      bars: [
+        { label: "재생에너지 사용비중", value: 30, state: 0 },
+        { label: "전력사용량", value: 62, state: 0 },
+        { label: "신재생 사용량", value: 54, state: 1 },
+      ],
+      stateLabels: ["목표 진행", "점검"],
+    },
+    overview: {
+      cards: [
+        { tag: "Background", title: "RE100, 산단 단위의 과제", body: "입주 기업마다 재생에너지 전환 수준이 달라, 산단 전체가 RE100 목표에 얼마나 다가섰는지 파악하기 어려웠습니다." },
+        { tag: "Problem", title: "흩어진 에너지 데이터", body: "한국전력 전력량·신재생 사용량·온실가스 배출량이 따로 관리되어, 산단 간 비교와 목표 관리가 번거로웠습니다." },
+        { tag: "Solution", title: "한 화면의 RE 현황", body: "상단 KPI·추이 차트·성과 목표·산단 지도를 한 화면에 배치하고, 산단별 RE 등급을 지도 위 카드로 바로 보이게 했습니다." },
+      ],
+      point: {
+        title: ["오래 보는 관제 화면,", "다크와 라이트 모두."],
+        body: "관제실처럼 오래 띄워 두는 환경에는 다크 모드를, 보고와 공유에는 라이트 모드를 쓰도록 같은 구조를 두 모드로 설계했습니다. 전력은 Blue, 재생에너지는 Green으로 의미를 고정해 모드가 바뀌어도 읽는 법은 같습니다.",
+      },
+      features: [
+        { icon: Gauge, title: "핵심 에너지 지표", desc: "전기·한국전력·신재생 사용량과 온실가스 배출량을 전월과 비교해 보여줍니다." },
+        { icon: LineChart, title: "전력소비 추이", desc: "산단 평균과 지역의 월별 소비량을 차트와 표로 함께 제공합니다." },
+        { icon: Map, title: "산단 지도", desc: "전력량 단계 색상 지도 위에 산단별 RE 등급과 참여기업 수를 표시합니다." },
+        { icon: PieChart, title: "성과 목표 관리", desc: "재생에너지 비중·감축량 등 연간 목표 대비 진행률을 진행 바로 보여줍니다." },
+        { icon: MonitorPlay, title: "다크 · 라이트 모드", desc: "관제 환경과 보고 환경에 맞게 두 가지 테마를 제공합니다." },
+      ],
+    },
     next: "solar",
   },
 
   /* ---------------------------------------------------------------- */
   solar: {
-    no: "04",
+    no: "06",
     category: "Smart City · Solar Monitoring",
     title: ["제주 태양광 통합", "모니터링 플랫폼"],
     lead:
@@ -333,6 +547,14 @@ export const PROJECT_DETAILS = {
       { label: "Status", value: "오픈 준비 중 · Pre-launch" },
     ],
     mockup: { title: "통합 모니터링 시안", desc: "다크 헤더의 KPI와 지도 기반 설비 현황으로 관제 화면의 몰입감을 높였습니다." },
+    screens: {
+      title: "서브페이지 · 모바일",
+      desc: "같은 컬러와 KPI 구조를 서브페이지와 모바일 화면까지 이어 적용했습니다.",
+      items: [
+        { src: `${import.meta.env.BASE_URL}work/project-solar-sub.png`, title: "발전소 현황", desc: "기간별 발전량 그래프와 지역별 발전 정보 표" },
+        { src: `${import.meta.env.BASE_URL}work/project-solar-mobile.jpg`, title: "모바일 홈", desc: "대시보드를 한 손 스크롤 흐름으로 재구성", mobile: true },
+      ],
+    },
     hotspots: [
       { x: 18, y: 14, title: "총 발전설비용량", desc: "옐로-민트 그라데이션의 대형 숫자로 플랫폼의 핵심 지표를 가장 먼저." },
       { x: 64, y: 12, title: "발전량 차트", desc: "금일·전일, 금월·금년·누적 발전량을 미니 막대 차트로 비교." },
